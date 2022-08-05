@@ -35,7 +35,7 @@ mesh.add(sound)
 
 anime({
   targets: mesh.position,
-  z: [0,-7],
+  z: [0,-12],
   loop: true,
   direction: 'alternate',
   duration: 1500,
