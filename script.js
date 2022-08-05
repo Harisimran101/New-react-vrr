@@ -19,9 +19,9 @@ camera.add( listener );
 const sound = new THREE.PositionalAudio( listener );
 
 // load a sound and set it as the PositionalAudio object's buffer
-window.addEventListener('dblclick', () =>{
+document.querySelector('#VRButton').addEventListener('click', () =>{
   const audioLoader = new THREE.AudioLoader();
-audioLoader.load( 'https://assets.codepen.io/7014830/Rauf-faik.mp3', function( buffer ) {
+audioLoader.load( 'Rauf-faik.mp3', function( buffer ) {
 	sound.setBuffer( buffer );
 	sound.setRefDistance( 20 );
 	sound.play();
