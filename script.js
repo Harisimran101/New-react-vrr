@@ -1,6 +1,7 @@
 import * as THREE from 'https://cdn.skypack.dev/three@0.136';
 import { OrbitControls } from 'https://cdn.skypack.dev/three@0.136/examples/jsm/controls/OrbitControls.js';
 import { VRButton } from 'https://cdn.skypack.dev/three@0.136/examples/jsm/webxr/VRButton.js';
+import { RGBELoader } from 'https://cdn.skypack.dev/three@0.136/examples/jsm/loaders/RGBELoader.js';
 
 const scene = new THREE.Scene();
 			const camera = new THREE.PerspectiveCamera( 65, window.innerWidth / window.innerHeight, 0.1, 1000 );
@@ -31,7 +32,12 @@ const mesh = new THREE.Mesh( sphere, material );
 scene.add( mesh );
 mesh.add(sound)
 
+new RGBELoader().load('https://assets.codepen.io/7014830/studio.hdr',function(texture){
+texture.mapping = THREE.EquirectangularReflectionMapping;
 
+   scene.environment = texture;
+   scene.background = texture
+})
 
 
 
