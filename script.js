@@ -19,30 +19,31 @@ camera.add( listener );
 const sound = new THREE.PositionalAudio( listener );
 
 // load a sound and set it as the PositionalAudio object's buffer
-document.querySelector('#VRButton').addEventListener('click', () =>{
-  const audioLoader = new THREE.AudioLoader();
-audioLoader.load( 'Rauf-faik.mp3', function( buffer ) {
-	sound.setBuffer( buffer );
-	sound.setRefDistance( 20 );
-	sound.play();
-});
 
- })
+const clock = new THREE.Clock();
 
 // create an object for the sound to play from
-const allobjs = []
+ 
 
-for(let i = 0; i < 30; i++){
    const sphere = new THREE.SphereGeometry( 0.1, 32, 16 );
 const material = new THREE.MeshBasicMaterial( { color: 0xff2200 } );
 const mesh = new THREE.Mesh( sphere, material );
 scene.add( mesh );
-allobjs.push(sphere)
- mesh.position.x = (Math.random() - 0.5) * 5;
- mesh.position.y = (Math.random() - 0.5) * 5;
- mesh.position.z = (Math.random() - 0.5) * 5
+mesh.add(sound)
 
-}
+
+
+
+
+document.querySelector('#VRButton').addEventListener('click', () =>{
+	const audioLoader = new THREE.AudioLoader();
+  audioLoader.load( 'Rauf-faik.mp3', function( buffer ) {
+	  sound.setBuffer( buffer );
+	  sound.setRefDistance( 20 );
+	  sound.play();
+  });
+  
+   })
 
 // finally add the sound to the mesh
 
@@ -51,6 +52,7 @@ allobjs.push(sphere)
 				camera.position.set( 0, 1.6, 8 );
 
 		renderer.setAnimationLoop( function () {
+			const delta = clock.getDelta() * 0.8;
 
 	renderer.render( scene, camera );
 
