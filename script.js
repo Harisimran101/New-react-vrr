@@ -33,6 +33,15 @@ const mesh = new THREE.Mesh( sphere, material );
 scene.add( mesh );
 mesh.add(sound)
 
+anime({
+  targets: mesh.position,
+  z: [0,-7],
+  loop: true,
+  direction: 'alternate',
+  duration: 1500,
+  easing: 'easeInOutSine'
+})
+
 new RGBELoader().load('https://assets.codepen.io/7014830/studio.hdr',function(texture){
 texture.mapping = THREE.EquirectangularReflectionMapping;
 
@@ -42,11 +51,11 @@ texture.mapping = THREE.EquirectangularReflectionMapping;
 
 const controllerModelFactory = new XRControllerModelFactory();
 
-				controllerGrip1 = renderer.xr.getControllerGrip( 0 );
+				const controllerGrip1 = renderer.xr.getControllerGrip( 0 );
 				controllerGrip1.add( controllerModelFactory.createControllerModel( controllerGrip1 ) );
 				scene.add( controllerGrip1 );
 
-				controllerGrip2 = renderer.xr.getControllerGrip( 1 );
+				const controllerGrip2 = renderer.xr.getControllerGrip( 1 );
 				controllerGrip2.add( controllerModelFactory.createControllerModel( controllerGrip2 ) );
 				scene.add( controllerGrip2 );
 
