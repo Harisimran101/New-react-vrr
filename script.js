@@ -27,7 +27,7 @@ const clock = new THREE.Clock();
 // create an object for the sound to play from
  
 
-   const sphere = new THREE.SphereGeometry( 0.1, 32, 16 );
+   const sphere = new THREE.SphereGeometry( 0.4, 32, 16 );
 const material = new THREE.MeshBasicMaterial( { color: 0xff2200 } );
 const mesh = new THREE.Mesh( sphere, material );
 scene.add( mesh );
@@ -69,11 +69,17 @@ document.querySelector('#VRButton').addEventListener('click', () =>{
 //const controls = new OrbitControls( camera, renderer.domElement );
 
 				camera.position.set( 0, 1.6, 8 );
-
+				let theta = 0;
+				let radius = 9;
 		renderer.setAnimationLoop( function () {
 			const delta = clock.getDelta() * 0.8;
 
-			mesh.position.z -= delta * 4
+			// mesh.position.z -= delta * 4
+			theta += 0.2;
+
+			mesh.position.x = radius * Math.sin( THREE.MathUtils.degToRad( theta ) );
+			mesh.position.z = radius * Math.cos( THREE.MathUtils.degToRad( theta ) );
+			console.log(mesh.position)
 
 	renderer.render( scene, camera );
 
