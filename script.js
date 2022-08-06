@@ -56,9 +56,9 @@ const controllerModelFactory = new XRControllerModelFactory();
 
 document.querySelector('#VRButton').addEventListener('click', () =>{
 	const audioLoader = new THREE.AudioLoader();
-  audioLoader.load( 'Rauf-faik.mp3', function( buffer ) {
+  audioLoader.load( 'songnew.mp3', function( buffer ) {
 	  sound.setBuffer( buffer );
-	  sound.setRefDistance( 20 );
+	  sound.setRefDistance( 15 );
 	  sound.play();
   });
   
