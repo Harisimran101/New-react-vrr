@@ -75,7 +75,7 @@ document.querySelector('#VRButton').addEventListener('click', () =>{
 			const delta = clock.getDelta() * 0.8;
 
 			// mesh.position.z -= delta * 4
-			theta += 0.2;
+			theta += 0.3;
 
 			mesh.position.x = radius * Math.sin( THREE.MathUtils.degToRad( theta ) );
 			mesh.position.z = radius * Math.cos( THREE.MathUtils.degToRad( theta ) );
