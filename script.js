@@ -73,7 +73,7 @@ document.querySelector('#VRButton').addEventListener('click', () =>{
 		renderer.setAnimationLoop( function () {
 			const delta = clock.getDelta() * 0.8;
 
-			mesh.position.z -= delta
+			mesh.position.z -= delta * 3
 
 	renderer.render( scene, camera );
 
