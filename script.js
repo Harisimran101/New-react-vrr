@@ -33,14 +33,7 @@ const mesh = new THREE.Mesh( sphere, material );
 scene.add( mesh );
 mesh.add(sound)
 
-anime({
-  targets: mesh.position,
-  z: [0,-12],
-  loop: true,
-  direction: 'alternate',
-  duration: 1500,
-  easing: 'easeInOutSine'
-})
+
 
 new RGBELoader().load('https://assets.codepen.io/7014830/studio.hdr',function(texture){
 texture.mapping = THREE.EquirectangularReflectionMapping;
@@ -79,6 +72,8 @@ document.querySelector('#VRButton').addEventListener('click', () =>{
 
 		renderer.setAnimationLoop( function () {
 			const delta = clock.getDelta() * 0.8;
+
+			mesh.position.z -= delta
 
 	renderer.render( scene, camera );
 
